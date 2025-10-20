@@ -1,17 +1,70 @@
 package edu.unl.cc;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Domain sistema = new Domain();
+        Scanner sc = new Scanner(System.in);
+        int opcion;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        do {
+            System.out.println("\n--- CAE - Centro de Atención ---");
+            System.out.println("1. Recibir nuevo ticket");
+            System.out.println("2. Atender siguiente ticket");
+            System.out.println("3. Agregar nota");
+            System.out.println("4. Cambiar estado");
+            System.out.println("5. Deshacer");
+            System.out.println("6. Rehacer");
+            System.out.println("7. Mostrar cola");
+            System.out.println("8. Mostrar historial");
+            System.out.println("0. Salir");
+            System.out.print("Opción: ");
+            opcion = sc.nextInt();
+            sc.nextLine(); // limpiar buffer
+
+            switch (opcion) {
+                case 1:
+                    sistema.recibirTicket();
+                    break;
+                case 2:
+                    sistema.atenderTicket();
+                    break;
+                case 3:
+                    System.out.print("Contenido de la nota: ");
+                    String nota = sc.nextLine();
+                    sistema.agregarNota(nota);
+                    break;
+                case 4:
+                    System.out.println("Estados disponibles:");
+                    for (Estado e : Estado.values()) {
+                        System.out.println(" - " + e);
+                    }
+                    System.out.print("Nuevo estado: ");
+                    String estadoStr = sc.nextLine().toUpperCase();
+                    try {
+                        Estado estado = Estado.valueOf(estadoStr);
+                        sistema.cambiarEstado(estado);
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Estado inválido.");
+                    }
+                    break;
+                case 5:
+                    sistema.deshacer();
+                    break;
+                case 6:
+                    sistema.rehacer();
+                    break;
+                case 7:
+                    sistema.mostrarCola();
+                    break;
+                case 8:
+                    sistema.mostrarHistorial();
+                    break;
+            }
+        } while (opcion != 0);
+
+        sc.close();
+        System.out.println("Sistema finalizado.");
     }
 }

@@ -1,8 +1,8 @@
 package edu.unl.cc;
 
 public class Cola {
-    private Nodo frente;
-    private Nodo fin;
+    private Nodo<Ticket> frente;
+    private Nodo<Ticket> fin;
     private int tamaño;
 
     public Cola() {
@@ -12,8 +12,8 @@ public class Cola {
     }
 
     // Inserta una nota al final de la cola haciendo uso de la funcion vista en clase (offer/enqueue)
-    public void offer(Nota nota) {
-        Nodo nuevo = new Nodo(nota);
+    public void offer(Ticket ticket) {
+        Nodo<Ticket> nuevo = new Nodo<>(ticket);
         if (isEmpty()) {
             frente = fin = nuevo;
         } else {
@@ -24,22 +24,22 @@ public class Cola {
     }
 
     // Elimina y devuelve la nota del frente basado en lo visto en clase(poll/dequeue)
-    public Nota poll() {
+    public Ticket poll() {
         if (isEmpty()) {
             System.out.println("La cola está vacía");
             return null;
         }
-        Nota nota = frente.getDato();
+        Ticket ticket = frente.getDato();
         frente = frente.getSiguiente();
         tamaño--;
         if (frente == null) {
             fin = null;
         }
-        return nota;
+        return ticket;
     }
 
     // Esta funcion devuelve el frente de la cola sin eliminar el elemento (peek)
-    public Nota peek() {
+    public Ticket peek() {
         return isEmpty() ? null : frente.getDato();
     }
 
@@ -56,11 +56,11 @@ public class Cola {
     // Muestra el contenido de la cola
     public void mostrar() {
         if (isEmpty()) {
-            System.out.println("No hay notas en la cola");
+            System.out.println("No hay tickets en la cola");
             return;
         }
-        Nodo actual = frente;
-        System.out.println("\nNotas en cola");
+        Nodo<Ticket> actual = frente;
+        System.out.println("\nTickets en cola");
         while (actual != null) {
             System.out.println(" - " + actual.getDato());
             actual = actual.getSiguiente();

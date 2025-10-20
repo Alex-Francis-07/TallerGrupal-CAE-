@@ -3,28 +3,28 @@ package edu.unl.cc;
 /**
  * Nodo de la lista enlazada simple.
  */
-public class Nodo {
-    private Nota dato;
-    private Nodo siguiente;
+public class Nodo<T> {
+    private T dato;
+    private Nodo<T> siguiente;
 
-    public Nodo(Nota dato) {
+    public Nodo(T dato) {
         this.dato = dato;
         this.siguiente = null;
     }
 
-    public Nota getDato() {
+    public T getDato() {
         return dato;
     }
 
-    public void setDato(Nota dato) {
+    public void setDato(T dato) {
         this.dato = dato;
     }
 
-    public Nodo getSiguiente() {
+    public Nodo<T> getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(Nodo siguiente) {
+    public void setSiguiente(Nodo<T> siguiente) {
         this.siguiente = siguiente;
     }
 }
