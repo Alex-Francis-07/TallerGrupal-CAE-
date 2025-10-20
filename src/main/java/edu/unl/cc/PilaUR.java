@@ -4,13 +4,13 @@ package edu.unl.cc;
  * @author Mark
  */
 public class PilaUR {
-    private Queue colaTickets;
+    private Cola colaTickets;
     private Ticket ticketEnAtencion;
     private Pila pilaUndo;    // Accion para deshacer
     private Pila pilaRedo;    // Accion para rehacer
 
     public PilaUR() {
-        this.colaTickets = new Queue();
+        this.colaTickets = new Cola();
         this.pilaUndo = new Pila();
         this.pilaRedo = new Pila();
     }
@@ -44,18 +44,22 @@ public class PilaUR {
 
         Dato dato = pilaUndo.pop();
 
-        switch (dato.getTipo()) {
+        switch (dato.getTipoNota()) {
             case "Agregar_Nota":
-                // Accion que elimina la nota que se agrego.
-                Nota notaAgregada = (Nota) dato.getValorNuevo();
-                dato.getTicket().getHistorialNotas().eliminarPrimeraCoincidencia(notaAgregada.getContenido());
-                break;
+                if (dato.getValorNuevo() instanceof Nota) {
+                    // Accion que elimina la nota que se agrego.
+                    Nota notaAgregada = (Nota) dato.getValorNuevo();
+                    dato.getTicket().getHistorialNotas().eliminarPrimeraCoincidencia(notaAgregada.getContenido());
+                }
+            break;
 
             case "Cambiar_Estado":
-                // Accion que devuelve o restaura el estado anterior.
-                Estado estadoAnterior = (Estado) dato.getValorAnterior();
-                dato.getTicket().setEstado(estadoAnterior);
-                break;
+                if (dato.getValorNuevo() instanceof Estado) {
+                    // Accion que devuelve o restaura el estado anterior.
+                    Estado estadoAnterior = (Estado) dato.getValorAnterior();
+                    dato.getTicket().setEstado(estadoAnterior);
+                }
+            break;
         }
 
         // Accion para mover a pila REDO para poder rehacer.
@@ -67,21 +71,40 @@ public class PilaUR {
 
         Dato dato = pilaRedo.pop();
 
-        switch (dato.getTipo()) {
+        switch (dato.getTipoNota()) {
             case "Agregar_Nota":
-                // Accion para volver a agregar la nota
-                Nota nota = (Nota) dato.getValorNuevo();
-                dato.getTicket().getHistorialNotas().insertarAlInicio(nota);
-                break;
-
+                if (dato.getValorNuevo() instanceof Nota) {
+                    // Accion para volver a agregar la nota
+                    Nota nota = (Nota) dato.getValorNuevo();
+                    dato.getTicket().getHistorialNotas().insertarAlInicio(nota);
+                }
+            break;
             case "Cambiar_Estado":
-                // Accion para aplicar el estado nuevo nuevamente.
-                Estado estadoNuevo = (Estado) dato.getValorNuevo();
-                dato.getTicket().setEstado(estadoNuevo);
-                break;
+                if (dato.getValorNuevo() instanceof Estado) {
+                    // Accion para aplicar el estado nuevo nuevamente.
+                    Estado estadoNuevo = (Estado) dato.getValorNuevo();
+                    dato.getTicket().setEstado(estadoNuevo);
+
+                }
+            break;
         }
 
         // Accion para mover a pila UNDO.
         pilaUndo.push(dato);
+    }
+
+    public void atenderSiguienteTicket() {
+        ticketEnAtencion = colaTickets.poll();
+        if (ticketEnAtencion != null) {
+            ticketEnAtencion.setEstado(Estado.EN_ATENCION);
+        }
+    }
+
+    public Cola getCola() {
+        return colaTickets;
+    }
+
+    public Ticket getTicketEnAtencion() {
+        return ticketEnAtencion;
     }
 }

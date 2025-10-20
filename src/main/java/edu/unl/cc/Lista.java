@@ -9,7 +9,7 @@ import java.util.List;
  * Diseñada para integrarse con pilas (e.g., apilar acciones en PilaUR para undo/redo).
  */
 public class Lista {
-    private Nodo cabeza;
+    private Nodo<Nota> cabeza;
 
     public Lista() {
         this.cabeza = null;
@@ -20,7 +20,7 @@ public class Lista {
      * @param nota La nota a insertar.
      */
     public void insertarAlInicio(Nota nota) {
-        Nodo nuevoNodo = new Nodo(nota);
+        Nodo<Nota> nuevoNodo = new Nodo<>(nota);
         nuevoNodo.setSiguiente(cabeza);
         cabeza = nuevoNodo;
     }
@@ -38,7 +38,7 @@ public class Lista {
             cabeza = cabeza.getSiguiente(); // Eliminar cabeza
             return true;
         }
-        Nodo actual = cabeza;
+        Nodo<Nota> actual = cabeza;
         while (actual.getSiguiente() != null) {
             if (actual.getSiguiente().getDato().getContenido().equals(contenido)) {
                 actual.setSiguiente(actual.getSiguiente().getSiguiente()); // Eliminar el siguiente
@@ -55,7 +55,7 @@ public class Lista {
      */
     public List<String> listar() {
         List<String> notas = new ArrayList<>();
-        Nodo actual = cabeza;
+        Nodo<Nota> actual = cabeza;
         while (actual != null) {
             notas.add(actual.getDato().toString());
             actual = actual.getSiguiente();
