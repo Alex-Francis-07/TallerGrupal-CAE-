@@ -5,7 +5,7 @@ package edu.unl.cc;
  */
 public class Dato {
     private String tipoNota; // Tipos de notas.
-    private Ticket ticket;
+    private Ticket ticket; // Referencia al ticket que fue modificado.
     private Object valorAnterior; // Estado anterior o nota eliminada.
     private Object valorNuevo;   // Estado nuevo o nota agregada.
 
