@@ -65,7 +65,7 @@ Se implementaron estructuras de datos personalizadas que son:
 
 **Situación:** Se intenta ejecutar atenderTicket() cuando Cola está vacía.
 
-**Comportamiento esperado:** Se muestra el mensaje “La cola está vacía” y no ocurre ningún cambio en el sistema.
+**Comportamiento esperado:** Se muestra el mensaje “No hay tickets en la cola” y no ocurre ningún cambio en el sistema.
 
 * **Agregar nota vacía o nula**
 
