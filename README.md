@@ -97,8 +97,6 @@ Se implementaron estructuras de datos personalizadas que son:
 
 * **EN_COLA:** recién recibido
 * **EN_ATENCION:** en proceso de atención
-* **EN_PROCESO:** trámite en curso
-* **PENDIENTE_DOCS:** falta documentación
 * **COMPLETADO:** atención finalizada
 
 ---
