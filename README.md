@@ -62,11 +62,13 @@ Se implementaron estructuras de datos personalizadas que son:
 ## Casos Borde
 
 * **Atender sin tickets en la cola**
-* **Situación:** Se intenta ejecutar atenderTicket() cuando Cola está vacía.
+**Situación:** Se intenta ejecutar atenderTicket() cuando Cola está vacía.
+
 **Comportamiento esperado:** Se muestra el mensaje “La cola está vacía” y no ocurre ningún cambio en el sistema.
 
 * **Agregar nota vacía o nula**
 **Situación** El usuario ingresa una cadena vacía al agregar nota.
+
 **Comportamiento esperado:** La clase Nota lanza una excepción controlada IllegalArgumentException indicando que el contenido no puede ser vacío.
 
 
