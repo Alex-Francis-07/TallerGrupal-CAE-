@@ -86,10 +86,10 @@ Para obtener una copia local del proyecto y ejecutarlo, sigue estos pasos:
 * GitHub: [@Alex-Francis-07](https://github.com/Alex-Francis-07)
 
 **Julián Vega**
-* GitHub: [@Servio-Julian-Vega-Jimenez](https://github.com/Servio-Julian-Vega-Jimenez)
+* GitHub: [@Servio-Julian-Vega-Jimenez](https://github.com/ServioVega)
 
 **Mark Gonzales**
-* GitHub: [@mark777](https://github.com/mark777)
+* GitHub: [@mark777](https://github.com/Mark777g)
 
 **Cristhian Davila**
 * GitHub: [@cristhiandavila1938](https://github.com/cristhiandavila1938)
