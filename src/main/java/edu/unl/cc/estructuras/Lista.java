@@ -1,4 +1,6 @@
-package edu.unl.cc;
+package edu.unl.cc.estructuras;
+
+import edu.unl.cc.model.Nota;
 
 import java.util.ArrayList;
 import java.util.List;

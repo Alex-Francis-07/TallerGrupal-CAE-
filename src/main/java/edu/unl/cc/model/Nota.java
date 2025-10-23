@@ -1,4 +1,4 @@
-package edu.unl.cc;
+package edu.unl.cc.model;
 
 /**
  * Clase que representa una nota (observación) en un ticket.

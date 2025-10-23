@@ -1,4 +1,12 @@
-package edu.unl.cc;
+package edu.unl.cc.servicio;
+
+import edu.unl.cc.estructuras.Cola;
+import edu.unl.cc.estructuras.Pila;
+import edu.unl.cc.model.Dato;
+import edu.unl.cc.model.Estado;
+import edu.unl.cc.model.Nota;
+import edu.unl.cc.model.Ticket;
+
 /**
  *
  * @author Mark
