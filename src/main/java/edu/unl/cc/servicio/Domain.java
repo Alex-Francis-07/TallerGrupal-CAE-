@@ -1,4 +1,7 @@
-package edu.unl.cc;
+package edu.unl.cc.servicio;
+
+import edu.unl.cc.model.Estado;
+import edu.unl.cc.model.Ticket;
 
 public class Domain {
     private PilaUR gestor;

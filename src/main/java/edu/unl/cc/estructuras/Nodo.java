@@ -1,4 +1,4 @@
-package edu.unl.cc;
+package edu.unl.cc.estructuras;
 
 /**
  * Nodo de la lista enlazada simple.

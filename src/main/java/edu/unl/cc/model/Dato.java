@@ -1,4 +1,5 @@
-package edu.unl.cc;
+package edu.unl.cc.model;
+
 /**
  *
  * @author Mark

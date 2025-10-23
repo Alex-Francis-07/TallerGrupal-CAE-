@@ -1,4 +1,7 @@
-package edu.unl.cc;
+package edu.unl.cc.ui;
+
+import edu.unl.cc.model.Estado;
+import edu.unl.cc.servicio.Domain;
 
 import java.util.Scanner;
 

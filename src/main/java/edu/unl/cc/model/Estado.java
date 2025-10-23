@@ -1,4 +1,4 @@
-package edu.unl.cc;
+package edu.unl.cc.model;
 
 /**
  * Enum para estados de un ticket.

@@ -1,4 +1,7 @@
-package edu.unl.cc;
+package edu.unl.cc.estructuras;
+
+import edu.unl.cc.model.Dato;
+
 /**
  *
  * @author Mark
