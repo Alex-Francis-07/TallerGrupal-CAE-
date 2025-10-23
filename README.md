@@ -50,13 +50,26 @@ Para obtener una copia local del proyecto y ejecutarlo, sigue estos pasos:
 
 ---
 
-## Estructuras implementadas
+## Desiciones de diseño 
 
-* **Cola (Cola):** gestiona los tickets en orden FIFO.
-* **Lista enlazada (Lista):** almacena notas asociadas a cada ticket.
-* **Pilas (Pila):** registran acciones para deshacer (undo) y rehacer (redo).
-* **Dato (Dato):** encapsula cada acción realizada sobre un ticket.
-* **Enumeración (Estado):** define los estados posibles de un ticket
+Se implementaron estructuras de datos personalizadas que son:
+* **Cola:** para almacenar los casos en espera y atenderlos en orden de llegada (FIFO).
+* **Pila:** para undo/redo: registrar acciones de la sesión de atención para poder deshacer y rehacer cambios.
+* **Lista Enlazada Simple de notas por caso:** insertar al inicio, eliminar la primera coincidencia y recorrer para listar.
+
+---
+
+## Casos Borde
+
+* **Atender sin tickets en la cola**
+**Situación:** Se intenta ejecutar atenderTicket() cuando Cola está vacía.
+Comportamiento esperado: Se muestra el mensaje “La cola está vacía” y no ocurre ningún cambio en el sistema.
+
+* **Agregar nota vacía o nula**
+**Situación** El usuario ingresa una cadena vacía al agregar nota.
+Comportamiento esperado: La clase Nota lanza una excepción controlada IllegalArgumentException indicando que el contenido no puede ser vacío.
+
+
 
 ---
 
