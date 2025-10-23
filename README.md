@@ -32,7 +32,7 @@ Para obtener una copia local del proyecto y ejecutarlo, sigue estos pasos:
 
 1.  Clona el repositorio:
     ```sh
-    git clone [https://github.com/Alex-Francis-07/TallerGrupal-CAE.git](https://github.com/Alex-Francis-07/TallerGrupal-CAE.git)
+    git clone (https://github.com/Alex-Francis-07/TallerGrupal-CAE-.git)
     ```
 2.  Abre el proyecto en tu editor Java preferido (como IntelliJ).
 3.  Ejecuta la clase `Main.java` para iniciar el sistema.
