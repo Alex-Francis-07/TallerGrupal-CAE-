@@ -1,6 +1,7 @@
 package edu.unl.cc.ui;
 
 import edu.unl.cc.model.Estado;
+import edu.unl.cc.model.TipoTicket;
 import edu.unl.cc.servicio.Domain;
 
 import java.util.Scanner;
@@ -27,18 +28,27 @@ public class Main {
             sc.nextLine(); // limpiar buffer
 
             switch (opcion) {
-                case 1:
-                    sistema.recibirTicket();
-                    break;
-                case 2:
-                    sistema.atenderTicket();
-                    break;
-                case 3:
+                case 1 -> {
+                    System.out.print("Nombre del estudiante: ");
+                    String nombre = sc.nextLine();
+
+                    System.out.print("Tipo de ticket (NORMAL o URGENTE): ");
+                    String tipoStr = sc.nextLine().toUpperCase();
+
+                    try {
+                        TipoTicket tipo = TipoTicket.valueOf(tipoStr);
+                        sistema.recibirTicket(nombre, tipo);
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Tipo inválido. Use NORMAL o URGENTE.");
+                    }
+                }
+                case 2 -> sistema.atenderTicket();
+                case 3 -> {
                     System.out.print("Contenido de la nota: ");
                     String nota = sc.nextLine();
                     sistema.agregarNota(nota);
-                    break;
-                case 4:
+                }
+                case 4 -> {
                     System.out.println("Estados disponibles:");
                     for (Estado e : Estado.values()) {
                         System.out.println(" - " + e);
@@ -51,19 +61,11 @@ public class Main {
                     } catch (IllegalArgumentException e) {
                         System.out.println("Estado inválido.");
                     }
-                    break;
-                case 5:
-                    sistema.deshacer();
-                    break;
-                case 6:
-                    sistema.rehacer();
-                    break;
-                case 7:
-                    sistema.mostrarCola();
-                    break;
-                case 8:
-                    sistema.mostrarHistorial();
-                    break;
+                }
+                case 5 -> sistema.deshacer();
+                case 6 -> sistema.rehacer();
+                case 7 -> sistema.mostrarCola();
+                case 8 -> sistema.mostrarHistorial();
             }
         } while (opcion != 0);
 
