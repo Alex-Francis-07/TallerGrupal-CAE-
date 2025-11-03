@@ -2,6 +2,7 @@ package edu.unl.cc.servicio;
 
 import edu.unl.cc.model.Estado;
 import edu.unl.cc.model.Ticket;
+import edu.unl.cc.model.TipoTicket;
 
 public class Domain {
     private PilaUR gestor;
@@ -12,8 +13,11 @@ public class Domain {
         this.contadorTickets = 1;
     }
 
-    public void recibirTicket() {
-        Ticket nuevo = new Ticket(contadorTickets++);
+    /**
+     *Recibe un nuevo ticket con nombre y tipo.
+     */
+    public void recibirTicket(String nombre, TipoTicket tipo) {
+        Ticket nuevo = new Ticket(contadorTickets++, nombre, tipo);
         gestor.getCola().offer(nuevo);
         System.out.println("Ticket recibido: " + nuevo);
     }
