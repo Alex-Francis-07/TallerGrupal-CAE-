@@ -13,19 +13,21 @@ public class Ticket {
     private TipoTicket tipo;
     private Estado estado;
     private Lista historialNotas;
+    private String descripcion; // NUEVO CAMPO
 
     // Constructor de la clase ticket
-    public Ticket(int id, String nombreEstudiante, TipoTicket tipo) {
+    public Ticket(int id, String nombreEstudiante, TipoTicket tipo, String descripcion) {
         this.id = id;
         this.nombreEstudiante = nombreEstudiante;
         this.tipo = tipo;
+        this.descripcion = descripcion;
         this.estado = Estado.EN_COLA;
         this.historialNotas = new Lista();
     }
 
-    // Constructor alternativo por defecto
+    // Constructor alternativo
     public Ticket(int id) {
-        this(id, "Desconocido", TipoTicket.NORMAL);
+        this(id, "Desconocido", TipoTicket.NORMAL, "Sin descripción");
     }
 
     // GETTERS Y SETTERS
@@ -45,6 +47,10 @@ public class Ticket {
 
     public void setEstado(Estado estado) { this.estado = estado; }
 
+    public String getDescripcion() { return descripcion; } // NUEVO GETTER
+
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; } // NUEVO SETTER
+
     public Lista getHistorialNotas() { return historialNotas; }
 
     public List<String> getNotas() {
@@ -56,6 +62,7 @@ public class Ticket {
         return "Ticket #" + id +
                 " | Estudiante: " + nombreEstudiante +
                 " | Tipo: " + tipo +
-                " | Estado: " + estado;
+                " | Estado: " + estado +
+                " | Descripción: " + descripcion; // INCLUIR DESCRIPCIÓN
     }
 }
