@@ -1,5 +1,6 @@
 package edu.unl.cc.servicio;
 
+import edu.unl.cc.estructuras.Cola;
 import edu.unl.cc.model.Estado;
 import edu.unl.cc.model.Ticket;
 import edu.unl.cc.model.TipoTicket;
@@ -13,17 +14,23 @@ public class Domain {
         this.contadorTickets = 1;
     }
 
-    /**
-     * Recibe un nuevo ticket con nombre, tipo y descripción
-     */
-    public void recibirTicket(String nombre, TipoTicket tipo, String descripcion) {
-        try {
-            Ticket nuevo = new Ticket(contadorTickets++, nombre, tipo, descripcion);
-            gestor.getCola().offer(nuevo);
-            System.out.println("Ticket recibido: " + nuevo);
-        } catch (Exception e) {
-            System.out.println("Error al recibir ticket: " + e.getMessage());
-        }
+    public Ticket recibirTicket(String nombre, TipoTicket tipo, String descripcion) {
+        Ticket nuevo = new Ticket(contadorTickets++, nombre, tipo, descripcion);
+        gestor.getCola().offer(nuevo);
+        System.out.println("Ticket recibido: " + nuevo);
+        return nuevo;
+    }
+
+    public Cola getCola() {
+        return gestor.getCola();
+    }
+
+    public void setTicketEnAtencion(Ticket t) {
+        gestor.setTicketEnAtencion(t);
+    }
+
+    public Ticket getTicketEnAtencion() {
+        return gestor.getTicketEnAtencion();
     }
 
     public void atenderTicket() {
@@ -51,7 +58,7 @@ public class Domain {
     }
 
     public void mostrarHistorial() {
-        Ticket t = gestor.getTicketEnAtencion();
+        Ticket t = getTicketEnAtencion();
         if (t != null) {
             System.out.println("Historial de Ticket #" + t.getId() + " - " + t.getNombreEstudiante());
             System.out.println("Tipo: " + t.getTipo() + " | Estado: " + t.getEstado());

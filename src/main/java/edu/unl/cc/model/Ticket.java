@@ -3,19 +3,14 @@ package edu.unl.cc.model;
 import edu.unl.cc.estructuras.Lista;
 import java.util.List;
 
-/**
- * Clase que representa un Ticket dentro del sistema CAE.
- */
 public class Ticket {
-
     private int id;
     private String nombreEstudiante;
     private TipoTicket tipo;
     private Estado estado;
     private Lista historialNotas;
-    private String descripcion; // NUEVO CAMPO
+    private String descripcion;
 
-    // Constructor de la clase ticket
     public Ticket(int id, String nombreEstudiante, TipoTicket tipo, String descripcion) {
         this.id = id;
         this.nombreEstudiante = nombreEstudiante;
@@ -25,12 +20,23 @@ public class Ticket {
         this.historialNotas = new Lista();
     }
 
-    // Constructor alternativo
     public Ticket(int id) {
         this(id, "Desconocido", TipoTicket.NORMAL, "Sin descripción");
     }
 
-    // GETTERS Y SETTERS
+    public Lista getHistorialNotas() {
+        return historialNotas;
+    }
+
+    public List<String> getNotas() {
+        return historialNotas.listar(); // debe existir en tu clase Lista
+    }
+
+    public void agregarNota(String contenido) {
+        historialNotas.insertarAlInicio(new Nota(contenido)); // usa tu estructura actual
+    }
+
+    // Getters y setters existentes
     public int getId() { return id; }
 
     public String getNombreEstudiante() { return nombreEstudiante; }
@@ -47,15 +53,9 @@ public class Ticket {
 
     public void setEstado(Estado estado) { this.estado = estado; }
 
-    public String getDescripcion() { return descripcion; } // NUEVO GETTER
+    public String getDescripcion() { return descripcion; }
 
-    public void setDescripcion(String descripcion) { this.descripcion = descripcion; } // NUEVO SETTER
-
-    public Lista getHistorialNotas() { return historialNotas; }
-
-    public List<String> getNotas() {
-        return historialNotas.listar();
-    }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
     @Override
     public String toString() {
@@ -63,6 +63,6 @@ public class Ticket {
                 " | Estudiante: " + nombreEstudiante +
                 " | Tipo: " + tipo +
                 " | Estado: " + estado +
-                " | Descripción: " + descripcion; // INCLUIR DESCRIPCIÓN
+                " | Descripción: " + descripcion;
     }
 }
